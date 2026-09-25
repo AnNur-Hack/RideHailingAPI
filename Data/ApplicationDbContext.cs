@@ -50,6 +50,12 @@ public class ApplicationDbContext : DbContext
            .HasForeignKey(r => r.DriverId)
            .OnDelete(DeleteBehavior.Restrict);
        
+       modelBuilder.Entity<AuditLog>()
+           .HasOne(a => a.User)
+           .WithMany(u => u.AuditLogs)
+           .HasForeignKey(a => a.UserId)
+           .OnDelete(DeleteBehavior.Restrict);
+       
        modelBuilder.Entity<User>()
            .HasIndex(u => u.Email)
            .IsUnique();
