@@ -64,6 +64,10 @@ public class ApplicationDbContext : DbContext
            .HasIndex(u => u.UserId)
            .IsUnique();
        
+       modelBuilder.Entity<User>()
+           .HasIndex(u => u.PhoneNumber)
+           .IsUnique();
+       
        modelBuilder.Entity<Ride>()
            .HasIndex(r => r.RideReference)
            .IsUnique();

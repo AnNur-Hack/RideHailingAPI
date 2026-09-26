@@ -1,6 +1,15 @@
-﻿namespace RideHailingAPI.Repositories.Implementations;
+﻿using RideHailingAPI.Domain.Entities;
 
-public class IUserRepository
+namespace RideHailingAPI.Repositories.Interface;
+
+public interface IUserRepository
 {
+    public Task<User?> GetUserByEmailAsync(string email);
+    public Task<User?> GetUserByIdAsync(int id);
+    public Task<User?> GetUserByUserIdAsync(string userId);
     
+    public Task<User?> GetUserByPhoneNumberAsync(string phoneNumber);
+    
+    Task AddAsync(User user);
+    Task UpdateAsync(User user);
 }
